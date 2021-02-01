@@ -1,0 +1,26 @@
+{
+  "name": "Express.js-Note-Taker-Application",
+  "version": "1.0.0",
+  "description": "> TBD.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samrogers15/Express.js-Note-Taker-Application.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samrogers15/Express.js-Note-Taker-Application/issues"
+  },
+  "homepage": "https://github.com/samrogers15/Express.js-Note-Taker-Application#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "generate-unique-id": "^2.0.1",
+    "install": "^0.13.0"
+  }
+}

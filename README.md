@@ -35,6 +35,7 @@ TBD
 Application enabled using the following sources:
 
 * [NPM Express](https://expressjs.com/)
+* [NPM Generate Unique ID](https://www.npmjs.com/package/generate-unique-id)
 
 ## Contact
 Created by Sam Rogers - feel free to contact me to collaborate on this project or any other project!
