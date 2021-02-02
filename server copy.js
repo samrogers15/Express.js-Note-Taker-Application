@@ -21,103 +21,32 @@ const fs = require('fs');
 // Create express app and global variables
 const app = express();
 const PORT = 3000;
+const mainDirectory = path.join(__dirname, '/develop/public');
 
 // Set up Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('./develop/public'));
-
-// Define landing page route
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './develop/public/index.html'))
-});
+app.use(express.static('/develop/public'));
 
 // Define notes page route
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, './develop/public/notes.html'))
+    res.sendFile(path.join(mainDirectory, 'notes.html'));
 });
 
-// Create new notes - takes in JSON input
-app.post('/api/notes', (req, res) => {
-    fs.readFile(__dirname + '/develop/db/db.json', 'utf-8', (err, notes) => {
-        if (err) {
-            console.log('Error inside app.post readFile: ', err);
-        } else {
-            notes = JSON.parse(notes);
-            const id = notes[notes.length - 1].id + 1;
-            const newNote = {
-                title: req.body.title,
-                text: req.body.text,
-                id: id
-            }
-            const activeNote = notes.concat(newNote);
-            fs.writeFile(__dirname + '/develop/db/db.json', JSON.stringify(activeNote), (err, data) => {
-                if (err) {
-                    console.log('Error inside app.post writeFile: ', err);
-                } else {
-                    console.log(activeNote);
-                    res.json(activeNote);
-                }
-            })
-        }
-    })
-});
-
-// Gets notes from db.json
 app.get('/api/notes', (req, res) => {
-    fs.readFile(__dirname + '/develop/db/db.json', 'utf-8', (err, data) => {
-        if (error) {
-            console.log('Error inside app.get readFile: ', err);
-        } else {
-            res.json(JSON.parse(data))
-        }
-    })
+    res.sendFile(path.join(__dirname, '/develop/db/db.json'));
 });
 
-// Deletes a note from db.json
-app.delete('./api/notes/:id', (req, res) => {
-    const id = JSON.parse(req.params.id);
-    fs.readFile(__dirname + '/develop/db/db.json', 'utf-8', (err, data) => {
-        if (error) {
-            console.log('Error inside app.delete readFile: ', err);
-        } else {
-            notes = JSON.parse(notes);
-
-            notes = notes.filter(val => val.id !== id);
-
-            fs.writeFile(__dirname + '/develop/db/db.json', JSON.stringify(notes), (err, data) => {
-                if (err) {
-                    console.log('Error inside app.delete writeFile: ', err);
-                } else {
-                    res.json(notes);
-                }
-            })
-        }
-    })
+app.get('/api/notes/:id', (req, res) => {
+    let savedNotes = JSON.parse(fs.readFileSync('./develop/db/db.json', 'utf8'));
+    res.json(savedNotes[Number(req.params.id)]);
 });
 
-// Create put route to update a previous note
-app.put('/api/notes/:title', (req, res) => {
-    const id = JSON.parse(req.params.id);
-    fs.readFile(__dirname + '/develop/db/db.json', 'utf-8', (err, data) => {
-        if (error) {
-            console.log('Error inside app.put readFile: ', err);
-        } else {
-            notes = JSON.parse(notes);
-
-            notes = notes.filter(val => val.id !== id);
-
-            fs.writeFile(__dirname + '/develop/db/db.json', JSON.stringify(notes), (err, data) => {
-                if (err) {
-                    console.log('Error inside app.put writeFile: ', err);
-                } else {
-                    res.json(notes);
-                }
-            })
-        }
-    })
+app.get('*', (req, res) => {
+    res.sendFile(path.join(mainDirectory, 'index.html'));
 });
 
+//
 app.listen(PORT, () => console.log(`App listening on Port: ${PORT}`));
 
 // // Displays a single note, or returns false
