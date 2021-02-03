@@ -36,7 +36,7 @@ TBD.
 ## Code snippets
 
 The below example code shows the setup and initialization for the Express server:
-```html
+```js
 // Add required dependencies
 const express = require('express');
 const path = require('path');
