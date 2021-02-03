@@ -1,10 +1,12 @@
+// Add required dependencies
 const path = require('path');
 const fs = require('fs');
-const express = require('express');
 const generateUniqueId = require('generate-unique-id');
 
+// Require HTML routes file
 require('./html-routes');
 
+// Set up API routes export for server.js page
 module.exports = function (app) {
     fs.readFile('db/db.json', 'utf8', function (err, data) {
         if (err) throw err;

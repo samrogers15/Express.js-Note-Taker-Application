@@ -1,7 +1,8 @@
-const express = require('express');
+// Add required dependencies
 const path = require('path');
 const fs = require('fs');
 
+// Set up HTML routes export for server.js page
 module.exports = function (app) {
 
     app.get('/', function(req, res) {

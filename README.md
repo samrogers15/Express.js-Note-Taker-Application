@@ -4,9 +4,10 @@
 ## Table of contents
 * [User story](#user-story)
 * [General info](#general-info)
-* [Video link](#video-link)
+* [Screenshots](#Screenshots)
 * [Technologies](#technologies)
-* [Example HTML](#example-html)
+* [Live Link](#example-html)
+* [Code Snippet](#code-snippet)
 * [Sources](#sources)
 * [Contact](#contact)
 
@@ -18,8 +19,9 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 ## General info
 TBD.
 
-## Video link
-[Video Example]()
+## Screenshots
+![Homepage]()
+![Notes]()
 
 ## Technologies
 * HTML
@@ -28,8 +30,43 @@ TBD.
 * Node
 * NPM Express
 
-## Example HTML
-TBD
+## Live link
+[Express.js Note Taker Application]()
+
+## Code snippets
+
+The below example code shows the setup and initialization for the Express server:
+```html
+// Add required dependencies
+const express = require('express');
+const path = require('path');
+
+// Create express app
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+// Set up middleware to parse json file
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static('./public'));
+
+// Require routes files for both API routes and HTML routes
+require('./routing/api-routes')(app);
+require('./routing/html-routes')(app);
+
+// Invoke listen function on Express app
+app.listen(PORT, function() {
+    console.log(`App listening on Port: ${PORT}`);
+});
+```
+
+
+The below example code shows the routing setup for the HTML routes: 
+
+
+The below example code shows the routing setup for the API routes:
+
+
 
 ## Sources
 Application enabled using the following sources:
