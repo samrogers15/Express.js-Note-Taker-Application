@@ -20,8 +20,8 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 TBD.
 
 ## Screenshots
-![Homepage]()
-![Notes]()
+![Homepage](./public/assets/screenshots/live-link.png)
+![Notes](./public/assets/screenshots/note-examples.png)
 
 ## Technologies
 * HTML
@@ -31,7 +31,7 @@ TBD.
 * NPM Express
 
 ## Live link
-[Express.js Note Taker Application]()
+[Express.js Note Taker Application](https://stormy-beyond-88272.herokuapp.com/)
 
 ## Code snippets
 
